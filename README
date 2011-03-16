@@ -1,0 +1,52 @@
+Quixotix Payment 0.1.3 Beta
+============================
+
+Copyright (c) 2010, 2011 Quixotix Software, LLC
+All Rights Reserved.
+
+Quixotix Payment is a set of classes for abstract interfacing with online 
+payment gateways used to process credit card transactions.
+
+
+Supported Gateways
+------------------
+
+* Authorize.NET AIM - http://www.authorize.net
+* PSiGate XML Messenger - http://www.psigate.com
+* Quantam Gateway Authorize.Net Emulation - http://www.quantamgateway.com
+
+
+Installation
+------------
+
+    easy_install quix.pay
+    
+
+Example Usage
+-------------
+
+Simple authorize request using Authorize.NET in test mode::
+
+    from quix.pay.transaction import CreditCard
+    from quix.pay.gateway.authorizenet import AimGateway
+
+    card = CreditCard(
+        number = '4111111111111111',
+        month = '10',
+        year = '2020',
+        first_name = 'John',
+        last_name = 'Doe',
+        code = '123'    
+    )
+
+    gateway = AimGateway('YOUR API LOGIN', 'YOUR API PASSWORD')
+    gateway.use_test_mode = True
+    gateway.use_test_url = True
+    response = gateway.authorize(1, card)
+
+    print "Authorize Request: %s" % gateway.get_last_request().url
+    print "Transaction %s = %s: %s" % (response.trans_id, 
+                                       response.status_strings[response.status], 
+                                       response.message)
+
+
