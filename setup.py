@@ -5,9 +5,9 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 setup(
-    name='Quixotix Payment', 
+    name='quix.pay', 
     version='0.1.4',
-    description='Abstract interfacing with online payment gateways such as Authorize.Net.',
+    description='Abstract credit card processing with online payment gateways such as Authorize.Net.',
     long_description=read('README'),
     author='Micah Carrick',
     url='http://www.quixotix.com',
@@ -23,7 +23,8 @@ setup(
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Topic :: Office/Business :: Financial",
-        "Topic :: Software Development :: Libraries ",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "License :: OSI Approved :: BSD License",
     ],
     keywords = 'payment gateway processor credit card authorize.net AIM paypal'
 )
